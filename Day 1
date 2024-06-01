@@ -1,0 +1,16 @@
+class Solution {
+
+    // Method to calculate the score of a given string
+    public int scoreOfString(String s) {
+        int sum = 0; // Initialize the sum variable to store the total score
+
+        // Loop through the characters of the string
+        for (int i = 0; i < s.length() - 1; i++) {
+            int first = (int)(s.charAt(i)); // Get the ASCII value of the current character
+            int second = (int)(s.charAt(i + 1)); // Get the ASCII value of the next character
+            sum += Math.abs(first - second); // Calculate the absolute difference and add to the sum
+        }
+
+        return sum; // Return the total score
+    }
+}
