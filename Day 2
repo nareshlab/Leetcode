@@ -1,0 +1,21 @@
+// Reverse String
+
+class Solution {
+    public void reverseString(char[] s) {
+        //initialize left pointer with index 0 and the last pointer as the length of the string -1
+        int left =0, right =s.length -1;
+        //declare a while loop to swap each element if the left element is less than the right element... swap until left is >right
+
+        while(left<right){
+
+            //now declare a temporary variable and swap the elements...
+            char temp= s[left];
+            s[left]=s[right];
+            s[right]=temp;
+            //increment left and decrement right 
+            left++;
+            right--;
+        }
+        
+    }
+}
