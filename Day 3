@@ -1,0 +1,21 @@
+// Append Characters to String to Make Subsequence
+
+class Solution {
+    public int appendCharacters(String s, String t) {
+        //get the length of both the strings
+        int m=s.length();
+        int n=t.length();
+        int i=0,j=0; //initialise i and j
+        //check each letters in s with t.. if equal leave and move to next
+        while(i<m&&j<n){
+            //if letter found move to next letter in t 
+
+            if (s.charAt(i) == t.charAt(j)) j++;
+            //if not move the next letter in s
+            i++;
+        }
+        //find the difference of the letters to be appended
+        return n-j;
+        
+    }
+}
