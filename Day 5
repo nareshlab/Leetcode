@@ -1,0 +1,35 @@
+// Find COmmon Characters
+
+class Solution {
+    public List<String> commonChars(String[] words) {
+        int n = words.length; // Number of words in the array
+        List<String> ans = new ArrayList<>(); // List to store the result
+        int[] minFreq = new int[26]; // Array to store the minimum frequency of each letter
+
+        // Initialize minFreq with frequencies from the first word
+        for (char c : words[0].toCharArray()) {
+            minFreq[c - 'a']++;
+        }
+
+        // Iterate over the rest of the words
+        for (int i = 1; i < n; ++i) {
+            int[] freq = new int[26]; // Array to store frequencies of the current word
+            for (char c : words[i].toCharArray()) {
+                freq[c - 'a']++;
+            }
+            // Update minFreq with the minimum frequencies
+            for (int j = 0; j < 26; ++j) {
+                minFreq[j] = Math.min(minFreq[j], freq[j]);
+            }
+        }
+
+        // Build the result list based on minFreq
+        for (int i = 0; i < 26; ++i) {
+            while (minFreq[i]-- > 0) {
+                ans.add(String.valueOf((char) (i + 'a')));
+            }
+        }
+
+        return ans; // Return the list of common characters
+    }
+}
