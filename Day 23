@@ -1,0 +1,32 @@
+// Longest Continuous Subarray
+
+class Solution:
+    def minKBitFlips(self, arr: List[int], k: int) -> int:
+        count = 0
+        # deque for storing the right edges of windows
+        right_edges = deque()
+        # bit to check, initially it is 0
+        check = 0
+
+        for i in range(len(arr)):
+            if arr[i] == check:
+                if i + k > len(arr):
+                    return -1
+                # Appending the right edge of the window
+                right_edges.append(i + k - 1)
+                # Flipping the bit to check
+                if check == 0:
+                    check = 1
+                else:
+                    check = 0
+                count = count + 1
+            # If i is the right_edge of a previous window flip the check bit
+            # and pop the right edge as it is no longer useful
+            if right_edges and right_edges[0] == i:
+                if check == 0:
+                    check = 1
+                else:
+                    check = 0
+                right_edges.popleft()
+
+        return count
